@@ -1,38 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
+
+    <TableRow
+        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_weight="1">
+        <Button
+            android:id="@+id/player1"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Player1"
+            android:textSize="30sp"
+            />
+        <Button
+            android:id="@+id/player2"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Player2"
+            android:textSize="30sp"/>
+    </TableRow>
 
 
-    <Button
-        android:id="@+id/player1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Player1"
-        android:textSize="24sp"
-        />
-    <Button
-        android:id="@+id/player2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Player2"
-        android:textSize="24sp"/>
 
-    <Button
-        android:id="@+id/player3"
+    <TableRow
+        android:layout_height="fill_parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Player3"
-        android:textSize="24sp"/>
-    <Button
-        android:id="@+id/player4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Player4"
-        android:textSize="24sp"/>
+        android:layout_weight="1">
+        <Button
+            android:id="@+id/player3"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Player3"
+            android:textSize="30sp"/>
+        <Button
+            android:id="@+id/player4"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Player4"
+            android:textSize="30sp"/>
+    </TableRow>
 
-</LinearLayout>
+
+</TableLayout>

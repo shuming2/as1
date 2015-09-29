@@ -1,26 +1,35 @@
 package com.example.amber.as1;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        if (findViewById(R.id.fragment_container) != null) {
-            if (savedInstanceState != null) {
-                return;
+        Button timerButton = (Button) findViewById(R.id.timer);
+        timerButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TimerActivity.class);
+                startActivity(intent);
             }
-            MainFragment mainfrag = new MainFragment();
-            getFragmentManager().beginTransaction()
-                    .add(R.id.fragment_container, mainfrag).commit();
-        }
+        });
+
+
+        Button buzzerButton = (Button) findViewById(R.id.buzzer);
+
+        buzzerButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, BuzzerActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 }
