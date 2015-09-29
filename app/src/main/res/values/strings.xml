@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">shuming2-reflex</string>
+
+    <string name="timer_guide">After click on the start button, the game waits a short time before prompting you to click.</string>
+    <string name="action_settings">Settings</string>
+</resources>
