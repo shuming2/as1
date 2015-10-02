@@ -17,8 +17,17 @@ public class Buzzer4 extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.buzzer4);
 
-        startdialog();
+        AlertDialog builder  = new AlertDialog.Builder(this).create();
+        builder.setCanceledOnTouchOutside(false);
+        builder.setMessage("Are you ready now?") ;
+        builder.setButton(AlertDialog.BUTTON_POSITIVE, "Start", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
 
+        final BuzzerCount result = new BuzzerCount(this, "buzzer4player");
         Button player1 = (Button) findViewById(R.id.player1);
         Button player2 = (Button) findViewById(R.id.player2);
         Button player3 = (Button) findViewById(R.id.player3);
@@ -29,7 +38,8 @@ public class Buzzer4 extends Activity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case  R.id.player1:
-                        buzz(1);
+                        result.count(1);
+                        dialog(1);
                         break;
                     default:
                         break;
@@ -40,7 +50,8 @@ public class Buzzer4 extends Activity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.player2:
-                        buzz(2);
+                        result.count(2);
+                        dialog(2);
                         break;
                     default:
                         break;
@@ -52,7 +63,8 @@ public class Buzzer4 extends Activity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.player3:
-                        buzz(3);
+                        result.count(3);
+                        dialog(3);
                         break;
                     default:
                         break;
@@ -63,7 +75,8 @@ public class Buzzer4 extends Activity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.player4:
-                        buzz(4);
+                        result.count(4);
+                        dialog(4);
                         break;
                     default:
                         break;
@@ -74,8 +87,7 @@ public class Buzzer4 extends Activity {
     }
 
 
-    protected void buzz(int i) {
-        save(i);
+    protected void dialog(int i) {
         AlertDialog builder  = new AlertDialog.Builder(this).create();
         builder.setCanceledOnTouchOutside(false);
         builder.setMessage("The winner is player" + String.valueOf(i));
@@ -88,25 +100,4 @@ public class Buzzer4 extends Activity {
         });
         builder.show();
     }
-
-    protected void startdialog() {
-        AlertDialog builder  = new AlertDialog.Builder(this).create();
-        builder.setCanceledOnTouchOutside(false);
-        builder.setMessage("Are you ready now?") ;
-        builder.setButton(AlertDialog.BUTTON_POSITIVE, "Start", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        builder.show();
-    }
-    protected void save(int i) {
-        SharedPreferences pref = getSharedPreferences("shuming2-reflex.data", MODE_PRIVATE);
-        String key = "buzzer4player" + String.valueOf(i);
-        int count = pref.getInt(key, 0);
-        count += 1;
-        SharedPreferences.Editor editor = pref.edit();
-        editor.putInt(key,count).commit();
-    }
-
 }

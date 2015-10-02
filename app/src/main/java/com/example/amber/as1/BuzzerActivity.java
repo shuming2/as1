@@ -16,22 +16,21 @@ public class BuzzerActivity extends Activity {
         setContentView(R.layout.buzzer);
 
         Button twoplayer = (Button) findViewById(R.id.twoplayer);
+        Button threeplayer = (Button) findViewById(R.id.threeplayer);
+        Button fourplayer = (Button) findViewById(R.id.fourplayer);
+
         twoplayer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(BuzzerActivity.this, Buzzer2.class);
                 startActivity(intent);
-
             }
         });
-        Button threeplayer = (Button) findViewById(R.id.threeplayer);
         threeplayer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(BuzzerActivity.this, Buzzer3.class);
                 startActivity(intent);
-
             }
         });
-        Button fourplayer = (Button) findViewById(R.id.fourplayer);
         fourplayer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(BuzzerActivity.this, Buzzer4.class);
@@ -39,5 +38,4 @@ public class BuzzerActivity extends Activity {
             }
         });
     }
-
 }
