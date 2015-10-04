@@ -1,43 +1,45 @@
 package com.example.amber.as1;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-/**
- * Created by Amber on 15/9/29.
+/*
+ * Copyright (C) 2015, Shuming Zhang
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
+
 public class Buzzer3 extends Activity{
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.buzzer3);
 
-        AlertDialog builder  = new AlertDialog.Builder(this).create();
-        builder.setCanceledOnTouchOutside(false);
-        builder.setMessage("Are you ready now?") ;
-        builder.setButton(AlertDialog.BUTTON_POSITIVE, "Start", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        builder.show();
-
-        final BuzzerCount result = new BuzzerCount(this, "buzzer3player");
         Button player1 = (Button) findViewById(R.id.player1);
         Button player2 = (Button) findViewById(R.id.player2);
         Button player3 = (Button) findViewById(R.id.player3);
+        final BuzzerCount counter = new BuzzerCount(this, "buzzer3player", getIntent());
+
+        counter.startDialog();
 
         player1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.player1:
-                        result.count(1);
-                        dialog(1);
+                        counter.count(1);
                         break;
                     default:
                         break;
@@ -48,8 +50,7 @@ public class Buzzer3 extends Activity{
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.player2:
-                        result.count(2);
-                        dialog(2);
+                        counter.count(2);
                         break;
                     default:
                         break;
@@ -60,28 +61,12 @@ public class Buzzer3 extends Activity{
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.player3:
-                        result.count(3);
-                        dialog(3);
+                        counter.count(3);
                         break;
                     default:
                         break;
                 }
             }
         });
-
-    }
-
-    protected void dialog(int i) {
-        AlertDialog builder = new AlertDialog.Builder(this).create();
-        builder.setCanceledOnTouchOutside(false);
-        builder.setMessage("The winner is player" + String.valueOf(i));
-        builder.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-                finish();
-                startActivity(getIntent());
-            }
-        });
-        builder.show();
     }
 }
