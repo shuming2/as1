@@ -2,7 +2,7 @@
 
     //new addition
     <string name="app_name">shuming2-reflex</string>
-    <string name="timer_guide">\n\n\nAfter click the button, the game waits a short time before changing the button color and telling you to click.\n\n\n</string>
+    <string name="timer_guide">\n\n\nAfter clicking the button, the game will wait a short time before changing the button color and telling you to click.\n\n\n</string>
     <string name="buzzer_guide">\n\n\nChoose the number of player.\n\n\n</string>
 
 

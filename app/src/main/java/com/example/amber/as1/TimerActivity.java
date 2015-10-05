@@ -41,7 +41,7 @@ public class TimerActivity extends Activity {
                 if (!wait && click==0) {    //first click creates a confirmation dialog
                     click++;
                     AlertDialog builder = new AlertDialog.Builder(TimerActivity.this).create();
-                    builder.setMessage("Stick to the button. Once it changed, click!");
+                    builder.setMessage("Staring at the button. Once it changed, click it!");
                     builder.setCanceledOnTouchOutside(false);
                     builder.setButton(AlertDialog.BUTTON_POSITIVE, "Start", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
